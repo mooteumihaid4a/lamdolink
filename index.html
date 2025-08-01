@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook - Đăng nhập hoặc đăng ký</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f0f2f5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .content-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 980px;
+            gap: 40px;
+        }
+
+        .left-section {
+            flex: 1;
+            max-width: 580px;
+        }
+
+        .facebook-logo {
+            color: #1877f2;
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 0;
+            line-height: 1;
+        }
+
+        .tagline {
+            font-size: 1.75rem;
+            line-height: 1.4;
+            color: #1c1e21;
+            margin-bottom: 20px;
+        }
+
+        .right-section {
+            flex: 1;
+            max-width: 396px;
+        }
+
+        .login-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 28px;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .form-input {
+            padding: 14px 16px;
+            border: 1px solid #dddfe2;
+            border-radius: 6px;
+            font-size: 17px;
+            line-height: 16px;
+            width: 100%;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #1877f2;
+            box-shadow: 0 0 0 2px #e7f3ff;
+        }
+
+        .login-button {
+            background: #1877f2;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .login-button:hover {
+            background: #166fe5;
+        }
+
+        .forgot-password {
+            text-align: center;
+            margin: 16px 0;
+        }
+
+        .forgot-password a {
+            color: #1877f2;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        .divider {
+            border-top: 1px solid #dadde1;
+            margin: 20px 0;
+        }
+
+        .create-account-button {
+            background: #42b72a;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 17px;
+            font-weight: bold;
+            padding: 14px 16px;
+            cursor: pointer;
+            width: fit-content;
+            margin: 0 auto;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        .create-account-button:hover {
+            background: #36a420;
+        }
+
+        .create-page-text {
+            text-align: center;
+            font-size: 14px;
+            color: #1c1e21;
+            margin-top: 28px;
+        }
+
+        .create-page-text a {
+            color: #1c1e21;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .create-page-text a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            background: white;
+            padding: 20px 0;
+            border-top: 1px solid #dddfe2;
+        }
+
+        .footer-content {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .languages {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            font-size: 12px;
+        }
+
+        .language-link {
+            color: #737373;
+            text-decoration: none;
+            padding: 2px 8px;
+        }
+
+        .language-link.active {
+            color: #1877f2;
+            font-weight: bold;
+        }
+
+        .language-link:hover {
+            text-decoration: underline;
+        }
+
+                 .footer-links {
+             display: flex;
+             flex-wrap: wrap;
+             gap: 20px;
+             margin-bottom: 20px;
+             font-size: 12px;
+         }
+
+         .footer-column {
+             display: flex;
+             flex-direction: column;
+             gap: 8px;
+             min-width: 160px;
+         }
+
+        .footer-link {
+            color: #737373;
+            text-decoration: none;
+        }
+
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+
+        .copyright {
+            color: #737373;
+            font-size: 12px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 900px) {
+            .content-wrapper {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .left-section {
+                max-width: 100%;
+            }
+
+            .facebook-logo {
+                font-size: 3rem;
+            }
+
+            .tagline {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-container {
+                padding: 10px;
+            }
+
+            .login-card {
+                padding: 15px;
+            }
+
+            .facebook-logo {
+                font-size: 2.5rem;
+            }
+
+            .tagline {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="content-wrapper">
+            <div class="left-section">
+                <div class="facebook-logo">facebook</div>
+                <div class="tagline">Facebook giúp bạn kết nối và chia sẻ với mọi người trong cuộc sống của bạn.</div>
+            </div>
+
+            <div class="right-section">
+                <div class="login-card">
+                    <form class="login-form">
+                        <input type="text" class="form-input" placeholder="Email hoặc số điện thoại" required>
+                        <input type="password" class="form-input" placeholder="Mật khẩu" required>
+                        <button type="submit" class="login-button">Đăng nhập</button>
+                    </form>
+
+                    <div class="forgot-password">
+                        <a href="#">Quên mật khẩu?</a>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <button class="create-account-button">Tạo tài khoản mới</button>
+                </div>
+
+                <div class="create-page-text">
+                    <a href="#">Tạo Trang</a> dành cho người nổi tiếng, thương hiệu hoặc doanh nghiệp.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="languages">
+                <a href="#" class="language-link active">Tiếng Việt</a>
+                <a href="#" class="language-link">English (UK)</a>
+                <a href="#" class="language-link">中文(台灣)</a>
+                <a href="#" class="language-link">한국어</a>
+                <a href="#" class="language-link">日本語</a>
+                <a href="#" class="language-link">Français (France)</a>
+                <a href="#" class="language-link">ภาษาไทย</a>
+                <a href="#" class="language-link">Español</a>
+                <a href="#" class="language-link">Português (Brasil)</a>
+                <a href="#" class="language-link">Deutsch</a>
+                <a href="#" class="language-link">Italiano</a>
+                <a href="#" class="language-link">+</a>
+            </div>
+
+                         <div class="footer-links">
+                 <div class="footer-column">
+                     <a href="#" class="footer-link">Đăng ký</a>
+                     <a href="#" class="footer-link">Đăng nhập</a>
+                     <a href="#" class="footer-link">Messenger</a>
+                     <a href="#" class="footer-link">Facebook Lite</a>
+                     <a href="#" class="footer-link">Video</a>
+                     <a href="#" class="footer-link">Meta Pay</a>
+                     <a href="#" class="footer-link">Cửa hàng trên Meta</a>
+                     <a href="#" class="footer-link">Meta Quest</a>
+                     <a href="#" class="footer-link">Ray-Ban Meta</a>
+                     <a href="#" class="footer-link">Meta AI</a>
+                 </div>
+
+                 <div class="footer-column">
+                     <a href="#" class="footer-link">Instagram</a>
+                     <a href="#" class="footer-link">Threads</a>
+                     <a href="#" class="footer-link">Trung tâm thông tin bỏ phiếu</a>
+                     <a href="#" class="footer-link">Chính sách quyền riêng tư</a>
+                     <a href="#" class="footer-link">Trung tâm quyền riêng tư</a>
+                     <a href="#" class="footer-link">Giới thiệu</a>
+                     <a href="#" class="footer-link">Tạo quảng cáo</a>
+                     <a href="#" class="footer-link">Tạo Trang</a>
+                     <a href="#" class="footer-link">Nhà phát triển</a>
+                     <a href="#" class="footer-link">Tuyển dụng</a>
+                 </div>
+
+                 <div class="footer-column">
+                     <a href="#" class="footer-link">Cookie</a>
+                     <a href="#" class="footer-link">Lựa chọn quảng cáo</a>
+                     <a href="#" class="footer-link">Điều khoản</a>
+                     <a href="#" class="footer-link">Trợ giúp</a>
+                     <a href="#" class="footer-link">Tải thông tin liên hệ lên & đối tượng không phải người dùng</a>
+                     <a href="#" class="footer-link">Nội dung khác do Meta AI tạo</a>
+                 </div>
+             </div>
+
+            <div class="copyright">
+                Meta © 2025
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Xử lý form đăng nhập
+        document.querySelector('.login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="text"]').value;
+            const password = this.querySelector('input[type="password"]').value;
+            
+            if (email && password) {
+                alert('Đăng nhập thành công! (Đây chỉ là demo)');
+            } else {
+                alert('Vui lòng nhập đầy đủ thông tin!');
+            }
+        });
+
+        // Xử lý nút tạo tài khoản
+        document.querySelector('.create-account-button').addEventListener('click', function() {
+            alert('Chuyển đến trang đăng ký tài khoản mới!');
+        });
+
+        // Xử lý link tạo trang
+        document.querySelector('.create-page-text a').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Chuyển đến trang tạo trang cho doanh nghiệp!');
+        });
+    </script>
+</body>
+</html> 
